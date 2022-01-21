@@ -7,6 +7,7 @@ export default function App() {
   return (
     <div style={{"padding-left":"33%"}}>
       <Create />
+      hi
     </div>
   );
 }
