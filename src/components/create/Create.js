@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { createEmp } from '../../actions/emp';
+import { useDispatch } from 'react-redux';
+
 import './style.css';
 export default function Create() {
+  const dispatch = useDispatch();
   const [empData, setEmpData] = useState({
     firstName: '',
     surName: '',
@@ -9,17 +13,19 @@ export default function Create() {
     gender: '',
   });
   const handleSubmit = () => {
+    e.preventDefault();
+    dispatch(createEmp(empData));
     console.log(empData);
   };
   return (
-    <div class="form-style-2">
-      <div class="form-style-2-heading">Provide your information</div>
+    <div className="form-style-2">
+      <div className="form-style-2-heading">Provide your information</div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="firstName">
           <span>First Name</span>
           <input
             type="text"
-            class="input-field"
+            className="input-field"
             name="firstName"
             value={empData.firstName}
             onChange={(e) =>
@@ -31,7 +37,7 @@ export default function Create() {
           <span>Sur Name</span>
           <input
             type="text"
-            class="input-field"
+            className="input-field"
             name="surName"
             value={empData.surName}
             onChange={(e) =>
@@ -43,7 +49,7 @@ export default function Create() {
           <span>Email</span>
           <input
             type="text"
-            class="input-field"
+            className="input-field"
             name="email"
             value={empData.email}
             onChange={(e) => setEmpData({ ...empData, email: e.target.value })}
@@ -53,7 +59,7 @@ export default function Create() {
           <span>Date Of Birth</span>
           <input
             type="Date"
-            class="input-field"
+            className="input-field"
             name="dob"
             value={empData.dob}
             onChange={(e) => setEmpData({ ...empData, dob: e.target.value })}
