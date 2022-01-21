@@ -12,7 +12,7 @@ export default function Create() {
     dob: '',
     gender: '',
   });
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createEmp(empData));
     console.log(empData);
