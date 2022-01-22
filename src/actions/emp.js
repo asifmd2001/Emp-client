@@ -9,10 +9,20 @@ export const getEmps = () => async (dispatch) => {
     console.log(error);
   }
 };
-export const createEmp = (post) => async (dispatch) => {
+export const createEmp = (emp) => async (dispatch) => {
   try {
-    const { data } = await api.createEmp(post);
+    const { data } = await api.createEmp(emp);
     const action = { type: 'CREATE', payload: data };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateEmp = (id, emp) => async (dispatch) => {
+  try {
+    const { data } = await api.updateEmp(id, emp);
+    const action = { type: 'UPDATE', payload: data };
     dispatch(action);
   } catch (error) {
     console.log(error);
