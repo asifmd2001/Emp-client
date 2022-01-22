@@ -65,7 +65,7 @@ export default function Create() {
         </button>
       </label>
 
-      <div className="form-style-2-heading">Update Your Info</div>
+      <div className="form-style-2-heading">Employee Details</div>
    
         <label htmlFor="firstName">
           <span>First Name</span>
