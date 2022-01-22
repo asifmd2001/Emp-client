@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch , useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateEmp } from '../../actions/emp';
 
 import './update.css';
 export default function Create() {
   const dispatch = useDispatch();
-  
+
   const [empData, setEmpData] = useState({
     firstName: '',
     surName: '',
@@ -13,45 +13,59 @@ export default function Create() {
     dob: '',
     gender: '',
   });
-  const [empId, SetEmpID] = useState({
+  const [empId, SetempId] = useState({
     id:""
   });
+  const [currentId, SetcurrentId] = useState(null);
   const [Seet, SetSet] = useState(null);
-  const emp= useSelector((state)=> empId.id ? state.emps.find((p)=> p._id == empId.id):null);
+  // const emp = useSelector((state) => state.emps);
 
-  useEffect(()=>{
-    if(Seet)
-    setEmpData(emp);
-  },[emp])
+  
+  const emp = useSelector((state) =>
+    currentId ? state.emps.find((p) => p._id === currentId) : null
+  );
+
+  useEffect(() => {
+    if (Seet) setEmpData(emp);
+  }, [emp]);
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
-    if(Seet){
-    dispatch(updateEmp(empId, empData))
-    }
-    else{
-     console.log("asi");
+    if (Seet) {
+      dispatch(updateEmp(currentId, empData));
+    } else {
+      console.log('asi');
     }
   };
   return (
     <div className="form-style-2">
       <div className="form-style-2-heading">Enter the Id</div>
-        <label htmlFor="id">
-          <span>Employee Id</span>
-          <input
-            type="text"
-            className="input-field"
-            name="id"
-            value={empId.id}
-            onChange={(e) =>
-              SetEmpID({...empId, id: e.target.value })
-            }
-          />
-        </label>
-        <label>
-          <span> </span>
-          <button className="button" onClick={()=>SetSet(true)} >Find</button>
-        </label>
-        
+      <label htmlFor="id">
+        <span>Employee Id</span>
+        <input
+          type="text"
+          className="input-field"
+          name="id"
+          value={empId.id}
+          onChange={(e) => SetempId({...empId , id: e.target.value })}
+        />
+      </label>
+      <label>
+        <span> </span>
+        <button
+          className="button"
+          onClick={() => {
+            
+            SetcurrentId(empId.id);
+
+            console.log(emp);
+
+            SetSet(true);
+          }}
+        >
+          Find
+        </button>
+      </label>
+
       <div className="form-style-2-heading">Update Your Info</div>
       <form onSubmit={handleSubmitUpdate}>
         <label htmlFor="firstName">
@@ -131,7 +145,7 @@ export default function Create() {
           <span> </span>
           <input type="submit" value="Update" />
         </label>
-        </form>
+      </form>
     </div>
   );
 }
