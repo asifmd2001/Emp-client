@@ -128,6 +128,7 @@ export default function Create() {
               type="radio"
               value="male"
               name="gender"
+              checked={empData.gender==="male"}
               onChange={(e) =>
                 setEmpData({ ...empData, gender: e.target.value })
               }
@@ -141,6 +142,7 @@ export default function Create() {
               type="radio"
               value="female"
               name="gender"
+              checked={empData.gender==="female"}
               onChange={(e) =>
                 setEmpData({ ...empData, gender: e.target.value })
               }
