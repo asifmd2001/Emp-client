@@ -17,22 +17,22 @@ export default function Create() {
   const [empId, SetempId] = useState({
     id:""
   });
-
-  ​useEffect​(​(​)​ ​=>​ ​{ 
-    ​    ​dispatch​(​getEmps())​; 
-   ​}​,​ ​[​​dispatch​]​)​;
+  useEffect(() => {
+    dispatch(getEmps());
+  }, [dispatch]);
   
-  const emp = useSelector((state) => (state) state.emps);
+  
+  // const emp = useSelector((state) => currentId? state.emps.find(currentId):null);
+  const emp = useSelector((state) =>
+    currentId ? state.emps.find((p) => p._id === currentId) : null
+  );
 
   console.log(emp);
 
-  emp.map((em)=>{
-    console.log(em);
-  })
-  // const emp = useSelector((state) =>
-  //   currentId ? state.emps.find((p) => p._id === currentId) : null
-  // );
-
+  
+  
+ 
+  
 
   useEffect(() => {
     if (Seet) setEmpData(emp);
