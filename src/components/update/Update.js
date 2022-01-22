@@ -5,7 +5,7 @@ import { updateEmp } from '../../actions/emp';
 import './update.css';
 export default function Create() {
   const dispatch = useDispatch();
-  const emp= useSelector((state)=> state.emps.find((p)=> p._id = empId.id));
+  
   const [empData, setEmpData] = useState({
     firstName: '',
     surName: '',
@@ -16,13 +16,21 @@ export default function Create() {
   const [empId, SetEmpID] = useState({
     id:""
   });
+  const [Seet, SetSet] = useState(null);
+  const emp= useSelector((state)=> empId.id ? state.emps.find((p)=> p._id == empId.id):null);
+
   useEffect(()=>{
+    if(Seet)
     setEmpData(emp);
   },[emp])
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
+    if(Seet){
     dispatch(updateEmp(empId, empData))
-   
+    }
+    else{
+     console.log("asi");
+    }
   };
   return (
     <div className="form-style-2">
@@ -41,7 +49,7 @@ export default function Create() {
         </label>
         <label>
           <span> </span>
-          <button className="button" onClick={} >Find</button>
+          <button className="button" onClick={()=>SetSet(true)} >Find</button>
         </label>
         
       <div className="form-style-2-heading">Update Your Info</div>
