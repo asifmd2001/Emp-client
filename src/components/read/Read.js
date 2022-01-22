@@ -70,6 +70,7 @@ export default function Create() {
         <label htmlFor="firstName">
           <span>First Name</span>
           <input
+          disabled="true"
             type="text"
             className="input-field"
             name="firstName"
@@ -82,6 +83,7 @@ export default function Create() {
         <label htmlFor="surName">
           <span>Sur Name</span>
           <input
+            disabled="true"
             type="text"
             className="input-field"
             name="surName"
@@ -94,6 +96,7 @@ export default function Create() {
         <label htmlFor="email">
           <span>Email</span>
           <input
+          disabled="true"
             type="text"
             className="input-field"
             name="email"
@@ -104,6 +107,7 @@ export default function Create() {
         <label htmlFor="dob">
           <span>Date Of Birth</span>
           <input
+          disabled="true"
             type="Date"
             className="input-field"
             name="dob"
@@ -117,6 +121,7 @@ export default function Create() {
             {' '}
             Male
             <input
+            disabled="true"
               className="radio"
               type="radio"
               value="male"
@@ -131,6 +136,7 @@ export default function Create() {
             {' '}
             Female
             <input
+            disabled="true"
               className="radio"
               type="radio"
               value="female"

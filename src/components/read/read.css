@@ -1,9 +1,27 @@
 .radio1 {
   overflow: hidden;
 }
+input:disabled{
+  color: black;
+}
+input[type="radio"]:disabled {
+    -webkit-appearance: none;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding: 0px;
+    background-clip: content-box;
+    border: 2px solid #bbbbbb;
+    background-color: white;
+    border-radius: 50%;
+}
+input[type="radio"]:checked {
+    background-color: black;
+}
 input.radio {
   float: left;
   width: 10px;
+  color: red;
   /* padding-bottom: 20px; */
 }
 
