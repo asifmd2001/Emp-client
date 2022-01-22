@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateEmp } from '../../actions/emp';
+import { updateEmp , getEmps} from '../../actions/emp';
 
 import './update.css';
 export default function Create() {
   const dispatch = useDispatch();
-
+  const [currentId, SetcurrentId] = useState(null);
+  const [Seet, SetSet] = useState(null);
   const [empData, setEmpData] = useState({
     firstName: '',
     surName: '',
@@ -16,14 +17,20 @@ export default function Create() {
   const [empId, SetempId] = useState({
     id:""
   });
-  const [currentId, SetcurrentId] = useState(null);
-  const [Seet, SetSet] = useState(null);
-  // const emp = useSelector((state) => state.emps);
-
+  ​useEffect​(​(​)​ ​=>​ ​{ 
+    ​    ​dispatch​(​getEmps(​)​)​; 
+   ​}​,​ ​[​currentId​,​ ​dispatch​]​)​;
   
-  const emp = useSelector((state) =>
-    currentId ? state.emps.find((p) => p._id === currentId) : null
-  );
+  const emp = useSelector((state) => state.emps);
+
+  console.log(emp);
+
+  emp.map((em)=>{
+    console.log(em);
+  })
+  // const emp = useSelector((state) =>
+  //   currentId ? state.emps.find((p) => p._id === currentId) : null
+  // );
 
   useEffect(() => {
     if (Seet) setEmpData(emp);
