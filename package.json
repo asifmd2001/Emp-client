@@ -2,6 +2,7 @@
   "name": "react",
   "version": "0.0.0",
   "private": true,
+  "proxy": "https://emp-backend.mohamed-asifasi.repl.co/emp",
   "dependencies": {
     "axios": "^0.25.0",
     "react": "^17.0.2",

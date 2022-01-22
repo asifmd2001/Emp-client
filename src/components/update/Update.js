@@ -5,23 +5,24 @@ import { updateEmp , getEmps} from '../../actions/emp';
 import './update.css';
 export default function Create() {
   const dispatch = useDispatch();
-  const [currentId, SetcurrentId] = useState(null);
-  const [Seet, SetSet] = useState(null);
+  const [currentId, SetcurrentId] = useState(0);
+  const [Seet, SetSet] = useState(0);
   const [empData, setEmpData] = useState({
     firstName: '',
     surName: '',
     email: '',
     dob: '',
-    gender: '',
+    gender: '', 
   });
   const [empId, SetempId] = useState({
     id:""
   });
+
   ​useEffect​(​(​)​ ​=>​ ​{ 
-    ​    ​dispatch​(​getEmps(​)​)​; 
-   ​}​,​ ​[​currentId​,​ ​dispatch​]​)​;
+    ​    ​dispatch​(​getEmps())​; 
+   ​}​,​ ​[​​dispatch​]​)​;
   
-  const emp = useSelector((state) => state.emps);
+  const emp = useSelector((state) => (state) state.emps);
 
   console.log(emp);
 
@@ -31,6 +32,7 @@ export default function Create() {
   // const emp = useSelector((state) =>
   //   currentId ? state.emps.find((p) => p._id === currentId) : null
   // );
+
 
   useEffect(() => {
     if (Seet) setEmpData(emp);
@@ -63,10 +65,7 @@ export default function Create() {
           onClick={() => {
             
             SetcurrentId(empId.id);
-
-            console.log(emp);
-
-            SetSet(true);
+             SetSet(true);
           }}
         >
           Find

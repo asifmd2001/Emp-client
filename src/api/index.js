@@ -15,4 +15,5 @@ export const fetchEmps = () => axios.get(url);
 
 export const createEmp = (newEmp) => axios.post(url, newEmp);
 
+
 export const updateEmp = (id, updatedEmp) => axios.patch(`${url}/${id}`, updatedEmp);

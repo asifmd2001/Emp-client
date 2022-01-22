@@ -1,12 +1,14 @@
 import * as api from '../api';
 
 export const getEmps = () => async (dispatch) => {
+    
   try {
     const { data } = await api.fetchEmps();
+    
     const action = { type: 'FETCH_ALL', payload: data };
     dispatch(action);
   } catch (error) {
-    console.log(error);
+    console.log('PPP' + error);
   }
 };
 export const createEmp = (emp) => async (dispatch) => {
