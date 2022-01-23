@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  getEmps} from '../../actions/emp';
+import {  getEmps, deleteEmp} from '../../actions/emp';
 
-import './read.css';
-export default function Read() {
+import './delete.css';
+export default function Delete() {
   const dispatch = useDispatch();
   const [currentId, SetcurrentId] = useState(0);
   const [Seet, SetSet] = useState(0);
@@ -27,8 +27,13 @@ export default function Read() {
     currentId ? state.emps.find((p) => p._id === currentId) : null
   );
 
-  console.log(emp);
+  // console.log(emp);
 
+// const handleSubmit=(e)=>{
+//   e.preventDefault();
+//   dispatch(deleteEmp(currentId));
+// console.log("done");
+// }
   
   
  
@@ -66,7 +71,7 @@ export default function Read() {
       </label>
 
       <div className="form-style-2-heading">Employee Details</div>
-   
+     
         <label htmlFor="firstName">
           <span>First Name</span>
           <input
@@ -148,6 +153,17 @@ export default function Read() {
             />
           </label>
         </label>
+        <label>
+          <span> </span>
+          <button  
+          className="button" 
+          onClick={()=>
+          {
+            dispatch(deleteEmp(emp.id));
+            console.log(emp.id);       
+            }}> Delete </button>
+        </label>
+
     </div>
   );
 }
