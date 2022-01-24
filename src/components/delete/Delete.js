@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {  getEmps, deleteEmp} from '../../actions/emp';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEmps, deleteEmp } from "../../actions/emp";
 
-import './delete.css';
+import "./delete.css";
 export default function Delete() {
   const dispatch = useDispatch();
   const [currentId, SetcurrentId] = useState(0);
   const [Seet, SetSet] = useState(0);
   const [empData, setEmpData] = useState({
-    firstName: '',
-    surName: '',
-    email: '',
-    dob: '',
-    gender: '', 
+    firstName: "",
+    surName: "",
+    email: "",
+    dob: "",
+    gender: ""
   });
   const [empId, SetempId] = useState({
-    id:""
+    id: ""
   });
   useEffect(() => {
     dispatch(getEmps());
   }, [dispatch]);
-  
-  
+
   // const emp = useSelector((state) => currentId? state.emps.find(currentId):null);
   const emp = useSelector((state) =>
     currentId ? state.emps.find((p) => p._id === currentId) : null
@@ -29,20 +28,16 @@ export default function Delete() {
 
   // console.log(emp);
 
-// const handleSubmit=(e)=>{
-//   e.preventDefault();
-//   dispatch(deleteEmp(currentId));
-// console.log("done");
-// }
-  
-  
- 
-  
+  // const handleSubmit=(e)=>{
+  //   e.preventDefault();
+  //   dispatch(deleteEmp(currentId));
+  // console.log("done");
+  // }
 
   useEffect(() => {
     if (Seet) setEmpData(emp);
   }, [emp]);
-  
+
   return (
     <div className="form-style-2">
       <div className="form-style-2-heading">Enter the Id</div>
@@ -53,7 +48,7 @@ export default function Delete() {
           className="input-field"
           name="id"
           value={empId.id}
-          onChange={(e) => SetempId({...empId , id: e.target.value })}
+          onChange={(e) => SetempId({ ...empId, id: e.target.value })}
         />
       </label>
       <label>
@@ -61,9 +56,8 @@ export default function Delete() {
         <button
           className="button"
           onClick={() => {
-            
             SetcurrentId(empId.id);
-             SetSet(true);
+            SetSet(true);
           }}
         >
           Find
@@ -71,99 +65,95 @@ export default function Delete() {
       </label>
 
       <div className="form-style-2-heading">Employee Details</div>
-     
-        <label htmlFor="firstName">
-          <span>First Name</span>
-          <input
-          disabled="true"
-            type="text"
-            className="input-field"
-            name="firstName"
-            value={empData.firstName}
-            onChange={(e) =>
-              setEmpData({ ...empData, firstName: e.target.value })
-            }
-          />
-        </label>
-        <label htmlFor="surName">
-          <span>Sur Name</span>
-          <input
-            disabled="true"
-            type="text"
-            className="input-field"
-            name="surName"
-            value={empData.surName}
-            onChange={(e) =>
-              setEmpData({ ...empData, surName: e.target.value })
-            }
-          />
-        </label>
-        <label htmlFor="email">
-          <span>Email</span>
-          <input
-          disabled="true"
-            type="text"
-            className="input-field"
-            name="email"
-            value={empData.email}
-            onChange={(e) => setEmpData({ ...empData, email: e.target.value })}
-          />
-        </label>
-        <label htmlFor="dob">
-          <span>Date Of Birth</span>
-          <input
-          disabled="true"
-            type="Date"
-            className="input-field"
-            name="dob"
-            value={empData.dob}
-            onChange={(e) => setEmpData({ ...empData, dob: e.target.value })}
-          />
-        </label>
-        <label className="radio1" htmlFor="field4">
-          <span>Gender</span>
-          <label className="label-radio">
-            {' '}
-            Male
-            <input
-            disabled="true"
-              className="radio"
-              type="radio"
-              value="male"
-              name="gender"
-              checked={empData.gender==="male"}
-              onChange={(e) =>
-                setEmpData({ ...empData, gender: e.target.value })
-              }
-            />
-          </label>
-          <label className="label-radio">
-            {' '}
-            Female
-            <input
-            disabled="true"
-              className="radio"
-              type="radio"
-              value="female"
-              name="gender"
-              checked={empData.gender==="female"}
-              onChange={(e) =>
-                setEmpData({ ...empData, gender: e.target.value })
-              }
-            />
-          </label>
-        </label>
-        <label>
-          <span> </span>
-          <button  
-          className="button" 
-          onClick={()=>
-          {
-            dispatch(deleteEmp(emp.id));
-            console.log(emp.id);       
-            }}> Delete </button>
-        </label>
 
+      <label htmlFor="firstName">
+        <span>First Name</span>
+        <input
+          disabled={true}
+          type="text"
+          className="input-field"
+          name="firstName"
+          value={empData.firstName}
+          onChange={(e) =>
+            setEmpData({ ...empData, firstName: e.target.value })
+          }
+        />
+      </label>
+      <label htmlFor="surName">
+        <span>Sur Name</span>
+        <input
+          disabled={true}
+          type="text"
+          className="input-field"
+          name="surName"
+          value={empData.surName}
+          onChange={(e) => setEmpData({ ...empData, surName: e.target.value })}
+        />
+      </label>
+      <label htmlFor="email">
+        <span>Email</span>
+        <input
+          disabled={true}
+          type="text"
+          className="input-field"
+          name="email"
+          value={empData.email}
+          onChange={(e) => setEmpData({ ...empData, email: e.target.value })}
+        />
+      </label>
+      <label htmlFor="dob">
+        <span>Date Of Birth</span>
+        <input
+          disabled={true}
+          type="Date"
+          className="input-field"
+          name="dob"
+          value={empData.dob}
+          onChange={(e) => setEmpData({ ...empData, dob: e.target.value })}
+        />
+      </label>
+      <label className="radio1" htmlFor="field4">
+        <span>Gender</span>
+        <label className="label-radio">
+          {" "}
+          Male
+          <input
+            disabled={true}
+            className="radio"
+            type="radio"
+            value="male"
+            name="gender"
+            checked={empData.gender === "male"}
+            onChange={(e) => setEmpData({ ...empData, gender: e.target.value })}
+          />
+        </label>
+        <label className="label-radio">
+          {" "}
+          Female
+          <input
+            disabled={true}
+            className="radio"
+            type="radio"
+            value="female"
+            name="gender"
+            checked={empData.gender === "female"}
+            onChange={(e) => setEmpData({ ...empData, gender: e.target.value })}
+          />
+        </label>
+      </label>
+      <label>
+        <span> </span>
+        <button
+          className="button"
+          onClick={() => {
+            dispatch(deleteEmp(emp.id));
+            console.log(emp.id);
+          }}
+        >
+          {" "}
+          Delete{" "}
+        </button>
+      </label>
     </div>
   );
 }

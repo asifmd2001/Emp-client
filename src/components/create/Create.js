@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
-import { createEmp } from '../../actions/emp';
-import { useDispatch } from 'react-redux';
-
-import './style.css';
+import React, { useState } from "react";
+import { createEmp } from "../../actions/emp";
+import { useDispatch } from "react-redux";
+import { useAlert } from 'react-alert';
+import "./style.css";
 export default function Create() {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const [empData, setEmpData] = useState({
-    firstName: '',
-    surName: '',
-    email: '',
-    dob: '',
-    gender: '',
+    firstName: "",
+    surName: "",
+    email: "",
+    dob: "",
+    gender: ""
   });
+  const clear = () => {
+    setEmpData({
+      firstName: "",
+      surName: "",
+      email: "",
+      dob: "",
+      gender: ""
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createEmp(empData));
     console.log(empData);
+    alert.show(`Employee ${empData.firstName} is Created`);
+    clear();
   };
+
   return (
     <div className="form-style-2">
       <div className="form-style-2-heading">Provide your information</div>
@@ -68,7 +81,7 @@ export default function Create() {
         <label className="radio1" htmlFor="field4">
           <span>Gender</span>
           <label className="label-radio">
-            {' '}
+            {" "}
             Male
             <input
               className="radio"
@@ -81,7 +94,7 @@ export default function Create() {
             />
           </label>
           <label className="label-radio">
-            {' '}
+            {" "}
             Female
             <input
               className="radio"
