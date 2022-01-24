@@ -1,38 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateEmp , getEmps} from '../../actions/emp';
-
-import './update.css';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateEmp, getEmps } from "../../actions/emp";
+import { useAlert } from "react-alert";
+import "./update.css";
 export default function Create() {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const [currentId, SetcurrentId] = useState(0);
   const [Seet, SetSet] = useState(0);
   const [empData, setEmpData] = useState({
-    firstName: '',
-    surName: '',
-    email: '',
-    dob: '',
-    gender: '', 
+    firstName: "",
+    surName: "",
+    email: "",
+    dob: "",
+    gender: ""
   });
   const [empId, SetempId] = useState({
-    id:""
+    id: ""
   });
   useEffect(() => {
     dispatch(getEmps());
   }, [dispatch]);
-  
-  
+
   // const emp = useSelector((state) => currentId? state.emps.find(currentId):null);
   const emp = useSelector((state) =>
     currentId ? state.emps.find((p) => p._id === currentId) : null
   );
 
   console.log(emp);
-
-  
-  
- 
-  
 
   useEffect(() => {
     if (Seet) setEmpData(emp);
@@ -42,8 +37,17 @@ export default function Create() {
     if (Seet) {
       dispatch(updateEmp(currentId, empData));
     } else {
-      console.log('asi');
+      console.log("asi");
     }
+  };
+  const clear = () => {
+    setEmpData({
+      firstName: "",
+      surName: "",
+      email: "",
+      dob: "",
+      gender: ""
+    });
   };
   return (
     <div className="form-style-2">
@@ -55,7 +59,7 @@ export default function Create() {
           className="input-field"
           name="id"
           value={empId.id}
-          onChange={(e) => SetempId({...empId , id: e.target.value })}
+          onChange={(e) => SetempId({ ...empId, id: e.target.value })}
         />
       </label>
       <label>
@@ -63,9 +67,8 @@ export default function Create() {
         <button
           className="button"
           onClick={() => {
-            
             SetcurrentId(empId.id);
-             SetSet(true);
+            SetSet(true);
           }}
         >
           Find
@@ -121,28 +124,28 @@ export default function Create() {
         <label className="radio1" htmlFor="field4">
           <span>Gender</span>
           <label className="label-radio">
-            {' '}
+            {" "}
             Male
             <input
               className="radio"
               type="radio"
               value="male"
               name="gender"
-              checked={empData.gender==="male"}
+              checked={empData.gender === "male"}
               onChange={(e) =>
                 setEmpData({ ...empData, gender: e.target.value })
               }
             />
           </label>
           <label className="label-radio">
-            {' '}
+            {" "}
             Female
             <input
               className="radio"
               type="radio"
               value="female"
               name="gender"
-              checked={empData.gender==="female"}
+              checked={empData.gender === "female"}
               onChange={(e) =>
                 setEmpData({ ...empData, gender: e.target.value })
               }

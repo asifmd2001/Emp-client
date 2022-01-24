@@ -15,6 +15,7 @@ export default function Read() {
     dob: "",
     gender: ""
   });
+
   const [empId, SetempId] = useState({
     id: ""
   });
@@ -30,12 +31,23 @@ export default function Read() {
   console.log(emp);
 
   useEffect(() => {
-    if (Seet && empData.firstName) setEmpData(emp);
+    if (Seet && emp) setEmpData(emp);
     else {
       alert.show("employee not found");
     }
   }, [emp]);
-
+  const clear = () => {
+    setEmpData({
+      firstName: "",
+      surName: "",
+      email: "",
+      dob: "",
+      gender: ""
+    });
+    SetempId({
+      id: ""
+    });
+  };
   return (
     <div className="form-style-2">
       <div className="form-style-2-heading">Enter the Id</div>
@@ -138,6 +150,17 @@ export default function Read() {
             onChange={(e) => setEmpData({ ...empData, gender: e.target.value })}
           />
         </label>
+      </label>
+      <label>
+        <span> </span>
+        <button
+          className="button"
+          onClick={() => {
+            clear();
+          }}
+        >
+          Clear
+        </button>
       </label>
     </div>
   );

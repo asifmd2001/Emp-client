@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmps, deleteEmp } from "../../actions/emp";
-
+import { useAlert } from "react-alert";
 import "./delete.css";
 export default function Delete() {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const [currentId, SetcurrentId] = useState(0);
   const [Seet, SetSet] = useState(0);
@@ -14,6 +15,15 @@ export default function Delete() {
     dob: "",
     gender: ""
   });
+  const clear = () => {
+    setEmpData({
+      firstName: "",
+      surName: "",
+      email: "",
+      dob: "",
+      gender: ""
+    });
+  };
   const [empId, SetempId] = useState({
     id: ""
   });
