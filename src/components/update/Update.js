@@ -30,15 +30,17 @@ export default function Create() {
   console.log(emp);
 
   useEffect(() => {
-    if (Seet) setEmpData(emp);
+    if (Seet && emp) setEmpData(emp);
+    else if (empId.id.length > 2) {
+      alert.show("employee not found");
+    }
   }, [emp]);
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
-    if (Seet) {
-      dispatch(updateEmp(currentId, empData));
-    } else {
-      console.log("asi");
-    }
+
+    dispatch(updateEmp(currentId, empData));
+
+    clear();
   };
   const clear = () => {
     setEmpData({
@@ -48,6 +50,8 @@ export default function Create() {
       dob: "",
       gender: ""
     });
+    SetSet(0);
+    SetempId({ id: "" });
   };
   return (
     <div className="form-style-2">
@@ -76,7 +80,13 @@ export default function Create() {
       </label>
 
       <div className="form-style-2-heading">Update Your Info</div>
-      <form onSubmit={handleSubmitUpdate}>
+      <form
+        onSubmit={(e) => {
+          if (window.confirm(`Are You Sure to Update Employee Data?`)) {
+            handleSubmitUpdate(e);
+          }
+        }}
+      >
         <label htmlFor="firstName">
           <span>First Name</span>
           <input

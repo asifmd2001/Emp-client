@@ -9,9 +9,9 @@ export default function App() {
   return (
     <div style={{ paddingLeft: "33%" }}>
       {/* <Create /> */}
-      {/* <Update/> */}
-      <Read />
-      {/* <Delete /> */}
+      {/* <Update /> */}
+      {/* <Read /> */}
+      <Delete />
     </div>
   );
 }

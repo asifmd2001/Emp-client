@@ -23,6 +23,8 @@ export default function Delete() {
       dob: "",
       gender: ""
     });
+    SetSet(0);
+    SetempId({ id: "" });
   };
   const [empId, SetempId] = useState({
     id: ""
@@ -45,7 +47,11 @@ export default function Delete() {
   // }
 
   useEffect(() => {
-    if (Seet) setEmpData(emp);
+    if (Seet && emp) setEmpData(emp);
+    else if (empId.id.length > 2 && !emp) {
+      alert.show("employee not found");
+      SetSet(0);
+    }
   }, [emp]);
 
   return (
@@ -156,12 +162,17 @@ export default function Delete() {
         <button
           className="button"
           onClick={() => {
-            dispatch(deleteEmp(emp.id));
-            console.log(emp.id);
+            if (
+              window.confirm(
+                `Are You Sure to Delete ${empData.firstName} from DataBase`
+              )
+            ) {
+              dispatch(deleteEmp(empId.id));
+              clear();
+            }
           }}
         >
-          {" "}
-          Delete{" "}
+          Delete
         </button>
       </label>
     </div>
