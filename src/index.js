@@ -17,17 +17,20 @@ const options = {
   transition: transitions.SCALE
 };
 
-const Root = () => (
-  <AlertProvider template={AlertTemplate} {...options}>
+function Root () {  
+  return(
+
+    <AlertProvider template={AlertTemplate} {...options}>
     <App />
   </AlertProvider>
-);
+    )
+};
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Root />
+  {<Root />}
   </Provider>,
   document.getElementById("root")
 );

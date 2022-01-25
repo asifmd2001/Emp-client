@@ -1,0 +1,20 @@
+.d {
+  padding: 20px;
+}
+.button {
+  border: none;
+  padding: 8px 15px 8px 15px;
+  background: #ff8500;
+  color: #fff;
+  box-shadow: 1px 1px 4px #dadada;
+  -moz-box-shadow: 1px 1px 4px #dadada;
+  -webkit-box-shadow: 1px 1px 4px #dadada;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.button:hover,
+.button:hover {
+  background: #ea7b00;
+  color: #fff;
+}
