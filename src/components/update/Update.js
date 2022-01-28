@@ -34,7 +34,7 @@ export default function Create() {
     else if (empId.id.length > 2) {
       alert.show("employee not found");
     }
-  }, [emp]);
+  }, [emp, Seet, empId, alert]);
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
 

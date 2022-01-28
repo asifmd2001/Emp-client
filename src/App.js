@@ -8,11 +8,11 @@ import "./components/banner/banner.css";
 var RE = null;
 export default function App() {
   const [a, Seta] = useState(1);
-  if (a == 1) {
+  if (a === 1) {
     RE = Create;
-  } else if (a == 3) {
+  } else if (a === 3) {
     RE = Update;
-  } else if (a == 2) {
+  } else if (a === 2) {
     RE = Read;
   } else {
     RE = Delete;
