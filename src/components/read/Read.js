@@ -32,8 +32,9 @@ export default function Read() {
 
   useEffect(() => {
     if (Seet && emp) setEmpData(emp);
-    else {
+    else if (empId.id.length > 2) {
       alert.show("employee not found");
+      SetSet(0);
     }
   }, [emp]);
   const clear = () => {

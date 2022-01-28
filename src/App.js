@@ -10,16 +10,16 @@ export default function App() {
   const [a, Seta] = useState(1);
   if (a == 1) {
     RE = Create;
-  } else if (a == 2) {
-    RE = Update;
   } else if (a == 3) {
+    RE = Update;
+  } else if (a == 2) {
     RE = Read;
   } else {
     RE = Delete;
   }
 
+  const style = '{{ paddingLeft: "33%" }}';
   return (
-    // style={{ paddingLeft: "33%" }}
     <div>
       <div>
         <button onClick={() => Seta(1)} className="button">
