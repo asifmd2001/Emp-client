@@ -3,6 +3,7 @@ import { createEmp } from "../../actions/emp";
 import { useDispatch } from "react-redux";
 import { useAlert } from 'react-alert';
 import "./style.css";
+let emailStatus = 'false';
 export default function Create() {
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -22,12 +23,29 @@ export default function Create() {
       gender: ""
     });
   };
+  const emailValidation = (empData) => {
+   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(empData.email))
+    {
+      emailStatus = true;
+      // return (true)
+    }else{
+      alert.show("You have entered an invalid email address!")
+      emailStatus = false;
+
+    // return (false)
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    emailValidation(empData);
+    if(emailStatus)
+    {
+    
     dispatch(createEmp(empData));
     console.log(empData);
     alert.show(`Employee ${empData.firstName} is Created`);
     clear();
+  }
   };
 
   return (

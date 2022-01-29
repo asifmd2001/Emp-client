@@ -7,7 +7,7 @@ export const getEmps = () => async (dispatch) => {
     const action = { type: "FETCH_ALL", payload: data };
     dispatch(action);
   } catch (error) {
-    console.log("PPP" + error);
+    console.log( error);
   }
 };
 export const createEmp = (emp) => async (dispatch) => {

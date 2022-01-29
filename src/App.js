@@ -5,43 +5,44 @@ import Update from "./components/update/Update";
 import Read from "./components/read/Read.js";
 import Delete from "./components/delete/Delete.js";
 import "./components/banner/banner.css";
-var RE = null;
+var EmpComponent = null;
 export default function App() {
-  const [a, Seta] = useState(1);
-  if (a === 1) {
-    RE = Create;
-  } else if (a === 3) {
-    RE = Update;
-  } else if (a === 2) {
-    RE = Read;
+
+  const [empComponent, setEmpComponent] = useState(1);
+  if (empComponent === 1) {
+    EmpComponent = Create;
+  } else if (empComponent === 3) {
+    EmpComponent = Update;
+  } else if (empComponent === 2) {
+    EmpComponent = Read;
   } else {
-    RE = Delete;
+    EmpComponent = Delete;
   }
 
-  const style = '{{ paddingLeft: "33%" }}';
+  // const style = '{{ paddingLeft: "33%" }}';
   return (
     <div>
       <h1>Employee Management</h1>
       <div></div>
       <h5>OpenBook Assignment Submitted By MOHAMED ASIF SM</h5>
       <div>
-        <button onClick={() => Seta(1)} className="button">
+        <button onClick={() => setEmpComponent(1)} className="button">
           CREATE
         </button>
         <d className="d" />
-        <button onClick={() => Seta(2)} className="button">
+        <button onClick={() => setEmpComponent(2)} className="button">
           READ
         </button>
         <d className="d" />
-        <button onClick={() => Seta(3)} className="button">
+        <button onClick={() => setEmpComponent(3)} className="button">
           UPDATE
         </button>
         <d className="d" />
-        <button onClick={() => Seta(4)} className="button">
+        <button onClick={() => setEmpComponent(4)} className="button">
           DELETE
         </button>
       </div>
-      <RE />
+      <EmpComponent />
       {/* <Create />
       <Update />
       <Read />
